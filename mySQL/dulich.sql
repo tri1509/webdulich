@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 13, 2022 lúc 06:19 PM
+-- Thời gian đã tạo: Th10 14, 2022 lúc 09:26 PM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 7.4.29
 
@@ -40,31 +40,6 @@ INSERT INTO `tbl_brand` (`brand_id`, `brand_name`) VALUES
 (1, 'tour miền nam'),
 (2, 'tour miền trung'),
 (3, 'tour miền bắc');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `tbl_category`
---
-
-CREATE TABLE `tbl_category` (
-  `category_id` int(11) UNSIGNED NOT NULL,
-  `category_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Đang đổ dữ liệu cho bảng `tbl_category`
---
-
-INSERT INTO `tbl_category` (`category_id`, `category_name`) VALUES
-(1, 'Yến sào chưng đường phèn'),
-(2, 'Yến chưng KID'),
-(3, 'Yến chưng nhân sâm'),
-(4, 'Yến chưng đông trùng hạ thảo'),
-(5, 'Yến chưng Saffron'),
-(6, 'Yến chưng hạt chia'),
-(7, 'Yến chưng không đường'),
-(8, 'Yến sào Táo Đỏ');
 
 -- --------------------------------------------------------
 
@@ -119,6 +94,30 @@ INSERT INTO `tbl_sanpham` (`sanpham_id`, `category_id`, `brand_id`, `sanpham_nam
 (737, 8, 2, 'DU LỊCH LIÊN TUYẾN: BẮC KINH - SEOUL - ĐẢO NAMI 2019', 'Sau bữa sáng, xe đưa Quý khách tham quan:\n- Suối khoáng nóng I-Resort: với không gian yên tĩnh, cây cối xanh tươi, I-Resort sẽ hiện ra như một bức tranh thiên nhiên đậm chất Việt, Quý khách sẽ được trải nghiệm dịch vụ tắm khoáng thư giãn. Ngoài ra, Quý khách còn có thể tắm bùn khoáng hoặc massage cho làn da thêm tươi trẻ.', 248000, 240000, 'mb3.jpg'),
 (738, 8, 2, 'DU LỊCH LIÊN TUYẾN: BẮC KINH - SEOUL - ĐẢO NAMI 2019', 'Sau bữa sáng, xe đưa Quý khách tham quan:\n- Suối khoáng nóng I-Resort: với không gian yên tĩnh, cây cối xanh tươi, I-Resort sẽ hiện ra như một bức tranh thiên nhiên đậm chất Việt, Quý khách sẽ được trải nghiệm dịch vụ tắm khoáng thư giãn. Ngoài ra, Quý khách còn có thể tắm bùn khoáng hoặc massage cho làn da thêm tươi trẻ.', 248000, 240000, 'mb3.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_slider`
+--
+
+CREATE TABLE `tbl_slider` (
+  `slider_id` int(11) NOT NULL,
+  `sider_name` varchar(255) NOT NULL,
+  `slider_img` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_slider`
+--
+
+INSERT INTO `tbl_slider` (`slider_id`, `sider_name`, `slider_img`) VALUES
+(1, 'Số 1', 'slide1.png'),
+(2, 'Số 2', 'slide2.jpg'),
+(3, 'Số 3', 'slide3.jpg'),
+(4, 'Số 4', 'slide4.jpg'),
+(5, 'Số 5', 'slide5.jpg'),
+(6, 'Số 6', 'slide6.jpg');
+
 --
 -- Chỉ mục cho các bảng đã đổ
 --
@@ -130,18 +129,18 @@ ALTER TABLE `tbl_brand`
   ADD PRIMARY KEY (`brand_id`);
 
 --
--- Chỉ mục cho bảng `tbl_category`
---
-ALTER TABLE `tbl_category`
-  ADD PRIMARY KEY (`category_id`);
-
---
 -- Chỉ mục cho bảng `tbl_sanpham`
 --
 ALTER TABLE `tbl_sanpham`
   ADD PRIMARY KEY (`sanpham_id`),
   ADD KEY `category_id` (`category_id`,`brand_id`),
   ADD KEY `brand_id` (`brand_id`);
+
+--
+-- Chỉ mục cho bảng `tbl_slider`
+--
+ALTER TABLE `tbl_slider`
+  ADD PRIMARY KEY (`slider_id`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -154,16 +153,16 @@ ALTER TABLE `tbl_brand`
   MODIFY `brand_id` int(50) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_category`
---
-ALTER TABLE `tbl_category`
-  MODIFY `category_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
 -- AUTO_INCREMENT cho bảng `tbl_sanpham`
 --
 ALTER TABLE `tbl_sanpham`
   MODIFY `sanpham_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=739;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_slider`
+--
+ALTER TABLE `tbl_slider`
+  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -173,7 +172,6 @@ ALTER TABLE `tbl_sanpham`
 -- Các ràng buộc cho bảng `tbl_sanpham`
 --
 ALTER TABLE `tbl_sanpham`
-  ADD CONSTRAINT `tbl_sanpham_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `tbl_category` (`category_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `tbl_sanpham_ibfk_2` FOREIGN KEY (`brand_id`) REFERENCES `tbl_brand` (`brand_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 

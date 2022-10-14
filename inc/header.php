@@ -113,6 +113,7 @@
     </div>
   </div>
   <div class="show991">
+    <div class="modal-mobile" id="modal-mobile" onclick="navMobile()"></div>
     <div class="header-mobile">
       <span class="header-bottom-icon-mobile" onclick="navMobile()">
         <i class="fa-sharp fa-solid fa-bars"></i>
@@ -138,10 +139,14 @@
     <div class="main-banner">
       <div class="slider-wrapper">
         <div id="mainSlider" class="nivoSlider">
-          <a href="javascript:void(0);"><img src="img/Cau_Vang_Sun_World_Ba_Na_Hills_1_RGFP.jpg" alt="banner"
+          <?php
+          $show_sider = $brand->show_sider();
+          if($show_sider){
+              while($result_sider = $show_sider->fetch_assoc()){
+          ?>
+          <a href="javascript:void(0);"><img src="img/<?php echo $result_sider['slider_img'] ?>"
               class="fullwidth" /></a>
-          <a href="javascript:void(1);"><img src="img/eo-gio-1024x768.jpg" alt="banner" class="fullwidth" /></a>
-          <a href="javascript:void(2);"><img src="img/slide3.jpg" alt="banner" class="fullwidth" /></a>
+          <?php } } ?>
         </div>
       </div>
     </div>

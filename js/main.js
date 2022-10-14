@@ -85,6 +85,8 @@ function myFunction() {
 }
 
 function navMobile() {
-  var element = document.getElementById("nav-mobile");
-  element.classList.toggle("show");
+  var nav_mobile = document.getElementById("nav-mobile");
+  nav_mobile.classList.toggle("show");
+  var modal = document.getElementById("modal-mobile");
+  modal.classList.toggle("show");
 }

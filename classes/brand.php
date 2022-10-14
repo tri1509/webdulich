@@ -17,5 +17,11 @@
             $result = $this->db->select($query);
             return $result;
         }
+
+        public function show_sider(){
+            $query = "SELECT * FROM tbl_slider ORDER BY slider_id ASC";
+            $result = $this->db->select($query);
+            return $result;
+        }
     }
 ?>

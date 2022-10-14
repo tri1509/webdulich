@@ -67,6 +67,10 @@ body::-webkit-scrollbar-thumb {
   height: 10px;
 }
 
+.fullwidth {
+  width: 100%;
+}
+
 .header {
   width: 100%;
 }
@@ -498,6 +502,27 @@ body::-webkit-scrollbar-thumb {
   color: #001264;
 }
 
+.modal-mobile {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  transition: opacity 0.2s;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.modal-mobile.show {
+  visibility: visible;
+  opacity: 1;
+}
+
 @media screen and (max-width: 991px) {
   .hide991 {
     display: none;
@@ -574,7 +599,7 @@ body::-webkit-scrollbar-thumb {
   .header-bottom-icon-mobile-close i {
     z-index: 1000;
     font-size: 3rem;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     height: 80px;
     line-height: 80px;
     cursor: pointer;
