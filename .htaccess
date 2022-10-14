@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule "index.html" "index.php"
+RewriteRule "chitiet.html" "chitiet.php"
+
+RewriteRule "^chi-tiet/([0-9]+).html$" "chitiet.php?id=$1"
