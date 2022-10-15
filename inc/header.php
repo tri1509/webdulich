@@ -39,8 +39,11 @@
   <link rel="stylesheet" href="./css/style.css" />
   <title>Webdulich</title>
 </head>
+<div class="loader">
+  <span class="fas fa-spinner xoay icon"></span>
+</div>
 
-<body>
+<body class="preloading">
   <div class="header hide991">
     <div class="header-top">
       <ul class="header-top-list">

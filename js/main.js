@@ -90,3 +90,52 @@ function navMobile() {
   var modal = document.getElementById("modal-mobile");
   modal.classList.toggle("show");
 }
+
+$(window).on("load", function (event) {
+  $("body").removeClass("preloading");
+  $(".loader").delay(1000).fadeOut("fast");
+});
+
+var link_image =
+  "https://lennguyenmedia.com/wp-content/uploads/2021/10/diem-hen-du-lich-anh-dai-dien.jpg";
+var link = "https://namdinhweb.net/";
+var icon_close = "https://namdinhweb.net/wp-content/uploads/2018/07/0-15.png";
+function closePopupBeta() {
+  document.getElementById("popup_banner_beta").remove(),
+    setCookie("showPopupBannerBeta", 1, 1);
+}
+
+function setCookie(e, n, o) {
+  var t = "";
+  if (o) {
+    var i = new Date();
+    i.setTime(i.getTime() + 24 * 60 * 60 * 1000),
+      (t = "; expires=" + i.toUTCString());
+  }
+  document.cookie = e + "=" + (n || "") + t + "; path=/";
+}
+function getCookie(e) {
+  for (
+    var n = e + "=", o = document.cookie.split(";"), t = 0;
+    t < o.length;
+    t++
+  ) {
+    for (var i = o[t]; " " == i.charAt(0); ) i = i.substring(1, i.length);
+    if (0 == i.indexOf(n)) return i.substring(n.length, i.length);
+  }
+  return null;
+}
+1 != getCookie("showPopupBannerBeta") &&
+  document.addEventListener("DOMContentLoaded", function (event) {
+    var e =
+      '<div id="popup_banner_beta"><div onclick="closePopupBeta()" class="mask_popup_banner_beta"></div><div class="content_popup_banner_beta"><img src="' +
+      icon_close +
+      '" class="close_icon" onclick="closePopupBeta()" alt="Close Image"><a href="' +
+      link +
+      '"><img src="' +
+      link_image +
+      '" alt="Image Popup Banner"/></a></div></div>';
+    setTimeout(function () {
+      document.body.innerHTML += e;
+    }, 5000);
+  });
