@@ -93,7 +93,7 @@ function navMobile() {
 
 $(window).on("load", function (event) {
   $("body").removeClass("preloading");
-  $(".loader").delay(1000).fadeOut("fast");
+  $(".loader").delay(200).fadeOut("fast");
 });
 
 var link_image =

@@ -65,10 +65,30 @@
     <div class="header-bottom" id="header-bottom">
       <img src="./img/dl-hoan-vu.png" alt="" width="200" class="header-bottom-img">
       <span class="header-bottom-span">
-        <img src="./img/iconhome.png" alt="" width="40">
+        <img src="./img/iconhome.png" alt="" width="30">
       </span>
-      <div class=" header-bottom-list">
-        <div class="header-bottom-item">tour<i class="fa-solid fa-chevron-down header-bottom-icon"></i></div>
+      <div class="header-bottom-list">
+        <div class="header-bottom-item header-bottom-item-tour">
+          tour
+          <i class="fa-solid fa-chevron-down header-bottom-icon"></i>
+          <div class="header-bottom-item-tour-list">
+            <ul>
+              <?php
+                $show_brand = $brand->show_brand();
+                if($show_brand){
+                  $i=0;
+                    while($result = $show_brand->fetch_assoc()){
+                      $i++;
+                ?>
+              <li>
+                <a href="#<?php echo $i ?>">
+                  <?php echo $result['brand_name'] ?>
+                </a>
+              </li>
+              <?php } } ?>
+            </ul>
+          </div>
+        </div>
         <div class="header-bottom-item">bảng giá</div>
         <div class="header-bottom-item header-bottom-item-dropdown">
           thông tin du lịch <i class="fa-solid fa-chevron-down header-bottom-icon"></i>

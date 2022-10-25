@@ -5,10 +5,14 @@
     <?php
 		$show_brand = $brand->show_brand();
 		if($show_brand){
+      $i=0;
 				while($result = $show_brand->fetch_assoc()){
+          $i++;
 		?>
     <div class="clear10"></div>
-    <h3 class="tit-pub"><?php echo $result['brand_name'] ?></h3>
+    <h3 id="<?php echo $i ?>" class="tit-pub" style="scroll-margin-top: 70px;">
+      <?php echo $result['brand_name'] ?>
+    </h3>
     <a href="" class="main-chitiet">Xem tất cả</a>
     <div class="clear20"></div>
     <div class="img-slider">
@@ -28,9 +32,14 @@
             <p class="old-pri">
               <?php echo number_format($result_sp['sanpham_gia'])." đ" ; ?>
             </p>
-            <p class="new-pri bold">
+            <p class="new-pri">
               <?php echo number_format($result_sp['sanpham_giakhuyenmai'])." đ" ; ?>
             </p>
+          </div>
+          <div class="clear10"></div>
+          <div class="phuongtien">
+            <p> Xe 4 chỗ<i class="fa-solid fa-car"></i></p> <br>
+            <p> Xe 16 chỗ<i class="fa-solid fa-bus"></i></p>
           </div>
           <div class="clear10"></div>
           <a href="chi-tiet/<?php echo $result_sp['sanpham_id'] ?>.html" class="addtocart">xem tour</a>
